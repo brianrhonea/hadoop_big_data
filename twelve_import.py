@@ -44,15 +44,14 @@ def send_data_to_localhost(data):
 
 # Function to determine if the market is open (9:30 am to 4:00 pm ET)
 def is_market_open():
-    return True
-    #now = datetime.now()
-    #market_open = now.replace(hour=9, minute=30, second=0, microsecond=0)
-    #market_close = now.replace(hour=16, minute=0, second=0, microsecond=0)
+    now = datetime.now()
+    market_open = now.replace(hour=9, minute=30, second=0, microsecond=0)
+    market_close = now.replace(hour=16, minute=0, second=0, microsecond=0)
     
     # Checking if it's a weekday (Mon-Fri)
-    #if now.weekday() < 5:
-        #return market_open <= now <= market_close
-    #return False
+    if now.weekday() < 5:
+        return market_open <= now <= market_close
+    return False
 
 # Main loop to fetch stock data and send to localhost
 def main():
